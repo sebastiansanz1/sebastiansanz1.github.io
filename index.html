@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roberto Sebastián Sánchez Martínez | Portafolio de Evidencias</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface-hover: #1f2630;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-soft: rgba(88, 166, 255, 0.12);
+      --badge-bg: #21262d;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    [data-theme="light"] {
+      --bg: #f6f8fa;
+      --surface: #ffffff;
+      --surface-hover: #f3f4f6;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --muted: #656d76;
+      --accent: #0969da;
+      --accent-soft: rgba(9, 105, 218, 0.1);
+      --badge-bg: #eff1f3;
+      --shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .theme-btn {
+      background: var(--badge-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.38rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--accent);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Hero / Datos Personales */
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .avatar {
+      width: 138px;
+      height: 138px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-info h1 {
+      font-size: 1.75rem;
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-subtitle {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-bio {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 1rem;
+    }
+
+    .personal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1.15rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.52rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      background: var(--badge-bg);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Proyectos Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card h3 {
+      font-size: 1.12rem;
+      color: var(--text);
+    }
+
+    .tag-type {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .badge {
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.78rem;
+      padding: 0.22rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: auto;
+    }
+
+    .card-links a {
+      flex: 1;
+      text-align: center;
+      padding: 0.48rem 0.75rem;
+      border-radius: 7px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: var(--badge-bg);
+      color: var(--text);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .card-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Stack Tecnológico */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.35rem;
+    }
+
+    .skill-box h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.85rem;
+      color: var(--accent);
+    }
+
+    /* Educación */
+    .edu-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .edu-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.35rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .edu-item h3 {
+      font-size: 1.08rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-school {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .edu-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.35rem;
+    }
+
+    .edu-date {
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      padding: 0.28rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* Contacto y Footer */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .contact-details p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-email {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 1rem;
+      user-select: all;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      .personal-meta, .hero-actions {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">Sebastián<span>.dev</span></a>
+      <nav>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#tecnologias">Tecnologías</a>
+        <a href="#estudios">Estudios</a>
+        <a href="#contacto">Contacto</a>
+        <button class="theme-btn" id="themeToggle" type="button">☀️ Modo Claro</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Fotografía y Datos Personales -->
+    <section class="hero" id="inicio">
+      <img
+        src="https://avatars.githubusercontent.com/sebastiansanz1"
+        alt="Fotografía de Roberto Sebastián Sánchez Martínez"
+        class="avatar"
+      />
+      <div class="hero-info">
+        <h1>Roberto Sebastián Sánchez Martínez</h1>
+        <p class="hero-subtitle">Desarrollador de Software | Estudiante de Ingeniería en Tecnologías de la Información</p>
+        <p class="hero-bio">
+          Desarrollador enfocado en aplicaciones web, backend, bases de datos y desarrollo móvil (Kotlin/Android). Experiencia creando sistemas de punto de venta, PWAs con Firebase y automatización de costos industriales.
+        </p>
+        <div class="personal-meta">
+          <span>📍 Nicolás Romero, Estado de México</span>
+          <span>🎓 UTFV (Matrícula: 23302010)</span>
+          <span>💻 GitHub: @sebastiansanz1</span>
+        </div>
+        <div class="hero-actions">
+          <a href="https://github.com/sebastiansanz1" target="_blank" rel="noopener" class="btn btn-primary">Ver Perfil en GitHub</a>
+          <a href="#proyectos" class="btn btn-secondary">Explorar Proyectos</a>
+          <a href="#contacto" class="btn btn-secondary">Contacto Directo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Proyectos (Mínimo 3 con link, mostrados primero por jerarquía) -->
+    <section id="proyectos">
+      <h2>Proyectos Desarrollados</h2>
+      <div class="projects-grid">
+
+        <!-- Proyecto 1 -->
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3>Pizzería La Napo (POS y Gestión)</h3>
+              <span class="tag-type">Full Stack Web</span>
+            </div>
+            <p>
+              Sistema web de punto de venta, control de pedidos y administración operativa desarrollado para la gestión integral de la pizzería La Napo.
+            </p>
+            <div class="tech-list">
+              <span class="badge">PHP</span>
+              <span class="badge">MySQL</span>
+              <span class="badge">JavaScript</span>
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/sebastiansanz1/pizzeria_lanapo" target="_blank" rel="noopener">Código en GitHub</a>
+          </div>
+        </article>
+
+        <!-- Proyecto 2 -->
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3>La Napo Delivery (PWA)</h3>
+              <span class="tag-type">PWA / Móvil</span>
+            </div>
+            <p>
+              Aplicación Web Progresiva diseñada para repartidores: gestión de entregas en tiempo real, ubicación, reseñas y autenticación con Google.
+            </p>
+            <div class="tech-list">
+              <span class="badge">JavaScript ES6</span>
+              <span class="badge">Firebase</span>
+              <span class="badge">PWA</span>
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/sebastiansanz1/napo-pizzeria-repartidor" target="_blank" rel="noopener">Código en GitHub</a>
+          </div>
+        </article>
+
+        <!-- Proyecto 3 -->
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3>Sistema de Costos Grupo Ancor</h3>
+              <span class="tag-type">Estadía TSU</span>
+            </div>
+            <p>
+              Sistema automatizado para control y cotización de procesos de tratamiento térmico de metales: selecciona el proceso, calcula costos fijos y variables y convierte el total a dólares.
+            </p>
+            <div class="tech-list">
+              <span class="badge">PHP</span>
+              <span class="badge">SQL</span>
+              <span class="badge">JavaScript</span>
+              <span class="badge">HTML/CSS</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/sebastiansanz1/Grupo-Ancor" target="_blank" rel="noopener">Código en GitHub</a>
+          </div>
+        </article>
+
+        <!-- Proyecto 4 -->
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3>Conference Pass</h3>
+              <span class="tag-type">Gestión Web</span>
+            </div>
+            <p>
+              Sistema web de registro, control de acceso y gestión de asistentes para conferencias magistrales y eventos académicos.
+            </p>
+            <div class="tech-list">
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+              <span class="badge">JavaScript</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/sebastiansanz1/conference-pass" target="_blank" rel="noopener">Código en GitHub</a>
+          </div>
+        </article>
+
+        <!-- Proyecto 5 -->
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3>Mi Salud Mexa (PWA)</h3>
+              <span class="tag-type">PWA / Offline</span>
+            </div>
+            <p>
+              Aplicación Web Progresiva enfocada en el seguimiento de calorías y macronutrientes con base de alimentos mexicanos y soporte offline mediante Service Workers.
+            </p>
+            <div class="tech-list">
+              <span class="badge">JavaScript</span>
+              <span class="badge">LocalStorage</span>
+              <span class="badge">Service Worker</span>
+              <span class="badge">Netlify</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/sebastiansanz1/mi-salud-mexa" target="_blank" rel="noopener">Código en GitHub</a>
+          </div>
+        </article>
+
+        <!-- Proyecto 6 -->
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3>Traductor Web</h3>
+              <span class="tag-type">Utilidad Web</span>
+            </div>
+            <p>
+              Aplicación web ligera y directa para la traducción rápida de textos entre idiomas con interfaz limpia y responsiva.
+            </p>
+            <div class="tech-list">
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+              <span class="badge">JavaScript</span>
+            </div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/sebastiansanz1/Traductor" target="_blank" rel="noopener">Código en GitHub</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 3. Lenguajes, Bases de Datos y Tecnologías/Plataformas -->
+    <section id="tecnologias">
+      <h2>Lenguajes, Bases de Datos y Tecnologías</h2>
+      <div class="skills-grid">
+        <div class="skill-box">
+          <h3>Lenguajes de Programación</h3>
+          <div class="tech-list">
+            <span class="badge">PHP</span>
+            <span class="badge">JavaScript</span>
+            <span class="badge">SQL</span>
+            <span class="badge">Kotlin</span>
+            <span class="badge">C#</span>
+            <span class="badge">HTML5</span>
+            <span class="badge">CSS3</span>
+            <span class="badge">R</span>
+          </div>
+        </div>
+
+        <div class="skill-box">
+          <h3>Bases de Datos</h3>
+          <div class="tech-list">
+            <span class="badge">MySQL</span>
+            <span class="badge">Firebase (Firestore / Auth)</span>
+            <span class="badge">SQL Server / Relacional</span>
+          </div>
+        </div>
+
+        <div class="skill-box">
+          <h3>Tecnologías, Plataformas y Herramientas</h3>
+          <div class="tech-list">
+            <span class="badge">Git</span>
+            <span class="badge">GitHub & GitHub Pages</span>
+            <span class="badge">Docker</span>
+            <span class="badge">Android Studio</span>
+            <span class="badge">XAMPP / AppServ</span>
+            <span class="badge">Netlify</span>
+            <span class="badge">Power BI</span>
+            <span class="badge">Unity & Godot</span>
+            <span class="badge">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Estudios -->
+    <section id="estudios">
+      <h2>Formación Académica y Experiencia</h2>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div>
+            <h3>Ingeniería en Tecnologías de la Información</h3>
+            <p class="edu-school">Universidad Tecnológica Fidel Velázquez (UTFV)</p>
+            <p class="edu-desc">Nicolás Romero, Estado de México — En curso (Graduación proyectada: Abril 2027).</p>
+          </div>
+          <span class="edu-date">2025 – Actualidad</span>
+        </div>
+
+        <div class="edu-item">
+          <div>
+            <h3>TSU en Tecnologías de la Información, Área Desarrollo de Software Multiplataforma</h3>
+            <p class="edu-school">Universidad Tecnológica Fidel Velázquez (UTFV)</p>
+            <p class="edu-desc">Estadía profesional de 525 horas en Grupo Industrial Ancor desarrollando el sistema automatizado de costos fijos y variables.</p>
+          </div>
+          <span class="edu-date">Titulado</span>
+        </div>
+
+        <div class="edu-item">
+          <div>
+            <h3>Prácticas Profesionales / Soporte TI y Ciberseguridad</h3>
+            <p class="edu-school">SecuriTI</p>
+            <p class="edu-desc">Ciudad Satélite, Naucalpan de Juárez — Soporte técnico, infraestructura y servicios de TI.</p>
+          </div>
+          <span class="edu-date">Actualidad</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Contacto -->
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <div class="contact-card">
+        <div class="contact-details">
+          <p>¿Te interesa colaborar o revisar alguno de mis repositorios? Puedes contactarme directamente:</p>
+          <p>Usuario GitHub: <span class="contact-email">github.com/sebastiansanz1</span></p>
+          <p>Ubicación: <span class="contact-email">Nicolás Romero, Estado de México</span></p>
+        </div>
+        <div class="hero-actions">
+          <a href="https://github.com/sebastiansanz1" target="_blank" rel="noopener" class="btn btn-primary">Ir a mi GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Roberto Sebastián Sánchez Martínez — Portafolio de Evidencias alojado en GitHub Pages.</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+    const htmlEl = document.documentElement;
+
+    toggleBtn.addEventListener("click", () => {
+      const isDark = htmlEl.getAttribute("data-theme") === "dark";
+      htmlEl.setAttribute("data-theme", isDark ? "light" : "dark");
+      toggleBtn.textContent = isDark ? "🌙 Modo Oscuro" : "☀️ Modo Claro";
+    });
+  </script>
+</body>
+</html>
